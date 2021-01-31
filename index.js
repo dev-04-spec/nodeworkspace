@@ -8,12 +8,14 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Blog');
 require('./services/passport');
-
+require('./services/cache');
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true }).then(result=>{
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true
+}).then(result => {
   console.log('connected to mongoose database !')
-}).catch(err =>{
-  console.log("Internal server error",err)
+}).catch(err => {
+  console.log("Internal server error", err)
 });
 
 const app = express();
